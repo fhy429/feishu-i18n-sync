@@ -6,12 +6,15 @@
   "types": "types/index.d.ts",
   "bin": {
     "feishu-i18n-sync": "./bin/sync.js",
-    "feishu-i18n-upload": "./bin/upload.js"
+    "feishu-i18n-upload": "./bin/upload.js",
+    "feishu-i18n-validate-config": "./bin/validate-config.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sync": "node ./bin/sync.js",
-    "upload": "node ./bin/upload.js"
+    "upload": "node ./bin/upload.js",
+    "test-config": "node ./bin/test-config.js",
+    "validate-config": "node ./bin/validate-config.js"
   },
   "keywords": [
     "feishu",

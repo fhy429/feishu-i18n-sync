@@ -29,10 +29,11 @@ for (let i = 0; i < args.length; i++) {
 }
 
 // 加载配置文件并合并配置
-const config = loadConfig(cliConfig);
-
-// 同步国际化数据
-syncI18nFiles(config)
+loadConfig(cliConfig)
+  .then(config => {
+    // 同步国际化数据
+    return syncI18nFiles(config);
+  })
   .then(() => {
     console.log('国际化数据同步完成');
   })

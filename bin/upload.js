@@ -29,10 +29,11 @@ for (let i = 0; i < args.length; i++) {
 }
 
 // 加载配置文件并合并配置
-const config = loadConfig(cliConfig);
-
-// 上传国际化数据
-uploadI18nData(config)
+loadConfig(cliConfig)
+  .then(config => {
+    // 上传国际化数据
+    return uploadI18nData(config);
+  })
   .then(() => {
     console.log('国际化数据上传完成');
   })

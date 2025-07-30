@@ -77,11 +77,17 @@ npm run sync
 # 上传国际化数据（从本地文件到飞书表格）
 npm run upload
 
+# 验证配置文件是否能正确加载
+npm run validate-config
+
 # 使用自定义路径同步数据
 npm run sync -- --input-dir ./src/i18n --output-dir ./src/i18n/output --mapping-file ./sheet-mapping.json
 
 # 使用自定义路径上传数据
 npm run upload -- --input-dir ./src/i18n --output-dir ./src/i18n/output --mapping-file ./sheet-mapping.json
+
+# 使用自定义参数验证配置
+npm run validate-config -- --input-dir ./src/i18n --output-dir ./src/i18n/output
 ```
 
 ### 4. 全局安装后使用
@@ -96,17 +102,23 @@ feishu-i18n-sync
 # 上传国际化数据（从本地文件到飞书表格）
 feishu-i18n-upload
 
+# 验证配置文件是否能正确加载
+feishu-i18n-validate-config
+
 # 使用自定义路径同步数据
 feishu-i18n-sync --input-dir ./src/i18n --output-dir ./src/i18n/output --mapping-file ./sheet-mapping.json
 
 # 使用自定义路径上传数据
 feishu-i18n-upload --input-dir ./src/i18n --output-dir ./src/i18n/output --mapping-file ./sheet-mapping.json
+
+# 使用自定义参数验证配置
+feishu-i18n-validate-config --input-dir ./src/i18n --output-dir ./src/i18n/output
 ```
 
 ### 5. 编程方式使用
 
 ```javascript
-const { loadEnv, syncI18nFiles, uploadI18nData } = require('feishu-i18n-plugin');
+const { loadEnv, syncI18nFiles, uploadI18nData, validateConfig, printValidationResult } = require('feishu-i18n-plugin');
 
 // 加载环境变量
 loadEnv();
@@ -116,6 +128,14 @@ await syncI18nFiles();
 
 // 上传国际化数据
 await uploadI18nData();
+
+// 验证配置文件
+const validationResult = await validateConfig({
+  // 可选的命令行参数
+  inputDir: './src/i18n',
+  outputDir: './src/i18n/output'
+});
+printValidationResult(validationResult);
 ```
 
 ### 6. 自定义配置
@@ -142,6 +162,20 @@ await syncI18nFiles(config);
 await uploadI18nData(config);
 ```
 
+### 7. 验证配置文件
+
+插件新增了配置文件验证功能，可以帮助您确认配置文件是否能被正确加载：
+
+```bash
+# 验证配置文件
+npx feishu-i18n-validate-config
+```
+
+该命令会检查：
+1. 配置文件是否能正确加载
+2. 配置文件中的关键字段是否存在
+3. 命令行参数是否能正确合并
+
 ## API
 
 ### `loadEnv()`
@@ -159,6 +193,18 @@ await uploadI18nData(config);
 将本地国际化数据上传到飞书表格。
 
 - `userConfig` (可选): 自定义配置对象
+
+### `validateConfig(cliConfig?)`
+
+验证插件是否能正确获取项目中的配置文件。
+
+- `cliConfig` (可选): 命令行配置参数
+
+### `printValidationResult(validationResult)`
+
+打印验证结果。
+
+- `validationResult`: 验证结果对象
 
 ## 许可证
 
