@@ -1,0 +1,27 @@
+{
+  "name": "feishu-i18n-plugin",
+  "version": "1.0.0",
+  "description": "一个用于同步和上传国际化数据到飞书表格的Node.js插件",
+  "main": "index.js",
+  "types": "types/index.d.ts",
+  "bin": {
+    "feishu-i18n-sync": "./bin/sync.js",
+    "feishu-i18n-upload": "./bin/upload.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync": "node ./bin/sync.js",
+    "upload": "node ./bin/upload.js"
+  },
+  "keywords": [
+    "feishu",
+    "i18n",
+    "plugin"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5"
+  }
+}
