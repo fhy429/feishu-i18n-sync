@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const { loadEnv, syncI18nFiles } = require('../index');
-const { loadConfig } = require('../lib/lib/config-loader');
+const { loadConfig } = require('../lib/config-loader');
 const path = require('path');
 
 // 加载环境变量

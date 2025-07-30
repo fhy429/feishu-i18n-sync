@@ -21,6 +21,10 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
+    "@babel/generator": "^7.28.0",
+    "@babel/parser": "^7.28.0",
+    "@babel/traverse": "^7.28.0",
+    "@babel/types": "^7.28.2",
     "axios": "^1.6.8",
     "dotenv": "^16.4.5"
   }
